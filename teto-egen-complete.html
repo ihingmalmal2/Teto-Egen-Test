@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="테토-에겐 성격유형 테스트 - 테스토스테론과 에스트로겐 특성으로 알아보는 나의 성격 유형">
+    <meta name="keywords" content="성격테스트, 테토에겐, 성격유형, 심리테스트, 연애스타일">
+    <meta name="author" content="Teto-Egen Test">
+    <meta property="og:title" content="테토-에겐 성격유형 테스트">
+    <meta property="og:description" content="나는 테토형일까? 에겐형일까? 지금 바로 테스트해보세요!">
+    <meta property="og:type" content="website">
+    <title>테토-에겐 성격유형 테스트 | 나는 테토형일까? 에겐형일까?</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 650px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .language-section {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .language-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .language-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            background: white;
+            color: #667eea;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn.selected, .btn.primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .gender-section {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .gender-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .gender-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        .question {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .answer {
+            padding: 1.2rem;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        
+        .answer:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+            border-color: #667eea;
+        }
+        
+        .answer.selected {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateX(10px);
+        }
+        
+        .result-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .teto { color: #e53e3e; }
+        .egen { color: #38a169; }
+        
+        .result-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .result-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .result-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .result-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .result-section li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .result-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .compatibility-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .compatibility-item {
+            padding: 1.2rem;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .compatibility-item h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .compatibility-score {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+        
+        .share-section {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .share-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .share-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .kakao { background: #FEE500; color: #000; }
+        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .twitter { background: #1DA1F2; }
+        .facebook { background: #1877F2; }
+        .copy { background: #28a745; }
+        
+        .hidden { display: none !important; }
+        
+        /* 애드센스를 위한 공간 */
+        .ad-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+            min-height: 100px;
+        }
+        
+        .ad-placeholder {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .question {
+                font-size: 1.2rem;
+            }
+            
+            .gender-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .share-buttons {
+                flex-direction: column;
+            }
+            
+            .share-btn {
+                width: 100%;
+            }
+        }
+        
+        /* 프린트 스타일 */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .btn, .share-section {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 시작 화면 -->
+        <div id="startScreen">
+            <header class="header">
+                <h1 id="mainTitle">테토-에겐 성격유형 테스트</h1>
+                <p class="subtitle" id="mainSubtitle">나는 테토형일까? 에겐형일까?</p>
+            </header>
+            
+            <section class="language-section">
+                <div class="language-title" id="languageTitle">Language / 언어</div>
+                <div class="language-buttons">
+                    <button class="btn selected" data-lang="ko">🇰🇷 한국어</button>
+                    <button class="btn" data-lang="en">🇺🇸 English</button>
+                    <button class="btn" data-lang="ja">🇯🇵 日本語</button>
+                    <button class="btn" data-lang="zh">🇨🇳 中文</button>
+                    <button class="btn" data-lang="es">🇪🇸 Español</button>
+                </div>
+            </section>
+            
+            <div class="intro-text" id="introText1">
+                테토-에겐 성격유형 테스트는 테스토스테론과 에스트로겐의 특성을 바탕으로<br>
+                당신의 성격과 행동 패턴을 분석합니다.
+            </div>
+            <div class="intro-text" id="introText2">
+                <strong>테토형:</strong> 리더십이 강하고 직설적이며 주도적인 성향<br>
+                <strong>에겐형:</strong> 부드럽고 섬세하며 공감 능력이 뛰어난 성향
+            </div>
+            
+            <!-- 애드센스 광고 위치 -->
+            <div class="ad-container">
+                <div class="ad-placeholder" id="adText1">
+                    <!-- Google AdSense 광고 코드가 여기에 들어갑니다 -->
+                    <small>광고 영역</small>
+                </div>
+            </div>
+            
+            <section class="gender-section">
+                <div class="gender-title" id="genderTitle">성별을 선택해주세요</div>
+                <div class="gender-buttons">
+                    <button class="btn" data-gender="male" id="maleBtn">남성</button>
+                    <button class="btn" data-gender="female" id="femaleBtn">여성</button>
+                </div>
+            </section>
+            
+            <button class="btn primary" id="startBtn" disabled>테스트 시작하기</button>
+        </div>
+        
+        <!-- 테스트 화면 -->
+        <div id="testScreen" class="hidden">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="question" id="question"></div>
+            <div class="answers" id="answers"></div>
+        </div>
+        
+        <!-- 결과 화면 -->
+        <div id="resultScreen" class="hidden">
+            <div class="result-title" id="resultTitle"></div>
+            <div class="result-description" id="resultDescription"></div>
+            
+            <div class="result-section">
+                <h3 id="personalityTitle">🎭 성격 특징</h3>
+                <ul id="personalityTraits"></ul>
+            </div>
+            
+            <div class="result-section">
+                <h3 id="loveTitle">💝 연애 스타일</h3>
+                <ul id="loveTraits"></ul>
+            </div>
+            
+            <div class="compatibility-section">
+                <h3 id="compatibilityTitle" style="text-align: center; margin-bottom: 1.5rem;">💕 연애 궁합</h3>
+                <div id="compatibilityContent"></div>
+            </div>
+            
+            <!-- 애드센스 광고 위치 -->
+            <div class="ad-container">
+                <div class="ad-placeholder" id="adText2">
+                    <!-- Google AdSense 광고 코드가 여기에 들어갑니다 -->
+                    <small>광고 영역</small>
+                </div>
+            </div>
+            
+            <div class="share-section">
+                <div class="share-title" id="shareTitle">결과를 친구들과 공유해보세요!</div>
+                <div class="share-buttons">
+                    <button class="share-btn kakao" id="kakaoBtn">💬 카카오톡</button>
+                    <button class="share-btn instagram" id="instagramBtn">📷 인스타그램</button>
+                    <button class="share-btn twitter" id="twitterBtn">🐦 트위터</button>
+                    <button class="share-btn facebook" id="facebookBtn">📘 페이스북</button>
+                    <button class="share-btn copy" id="copyBtn">📋 결과 복사</button>
+                </div>
+                <button class="btn primary" id="restartBtn">다시 테스트하기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 전역 변수 방지를 위한 모듈 패턴
+    const TetoEgenTest = (function() {
+        'use strict';
+        
+        // 상태 관리
+        const state = {
+            currentLanguage: 'ko',
+            selectedGender: null,
+            currentQuestion: 0,
+            tetoScore: 0,
+            egenScore: 0
+        };
+        
+        // DOM 요소 캐싱
+        const elements = {};
+        
+        // 번역 데이터
+        const translations = {
+            ko: {
+                title: "테토-에겐 성격유형 테스트",
+                subtitle: "나는 테토형일까? 에겐형일까?",
+                introText1: "테토-에겐 성격유형 테스트는 테스토스테론과 에스트로겐의 특성을 바탕으로<br>당신의 성격과 행동 패턴을 분석합니다.",
+                introText2: "<strong>테토형:</strong> 리더십이 강하고 직설적이며 주도적인 성향<br><strong>에겐형:</strong> 부드럽고 섬세하며 공감 능력이 뛰어난 성향",
+                languageTitle: "Language / 언어",
+                genderTitle: "성별을 선택해주세요",
+                male: "남성",
+                female: "여성",
+                startBtn: "테스트 시작하기",
+                selectGender: "성별을 선택해주세요!",
+                shareTitle: "결과를 친구들과 공유해보세요!",
+                restartBtn: "다시 테스트하기",
+                personalityTitle: "🎭 성격 특징",
+                loveTitle: "💝 연애 스타일",
+                compatibilityTitle: "💕 연애 궁합",
+                kakaoBtn: "💬 카카오톡",
+                instagramBtn: "📷 인스타그램",
+                twitterBtn: "🐦 트위터",
+                facebookBtn: "📘 페이스북",
+                copyBtn: "📋 결과 복사",
+                adText1: "광고 영역",
+                adText2: "광고 영역",
+                tetoType: "테토",
+                egenType: "에겐",
+                tetoDescription: "당신은 테스토스테론적 특성이 강한 테토{gender}입니다! 리더십이 있고 직설적이며 주도적인 성향을 가지고 있습니다.",
+                egenDescription: "당신은 에스트로겐적 특성이 강한 에겐{gender}입니다! 부드럽고 섬세하며 공감 능력이 뛰어난 성향을 가지고 있습니다.",
+                copySuccess: "결과가 복사되었습니다!",
+                tetoPersonality: [
+                    "목표 지향적이고 결단력이 있습니다",
+                    "리더십이 강하고 주도적인 성향을 보입니다",
+                    "경쟁심이 강하고 도전을 즐깁니다",
+                    "직설적이고 솔직한 커뮤니케이션을 선호합니다",
+                    "독립적이고 자신감이 넘칩니다"
+                ],
+                tetoLove: [
+                    "적극적으로 마음을 표현하고 관계를 주도합니다",
+                    "보호 본능이 강하고 파트너를 지키려 합니다",
+                    "열정적이고 강렬한 사랑을 추구합니다",
+                    "명확한 의사표현을 하고 직접적인 애정표현을 선호합니다",
+                    "관계에서도 주도권을 갖는 것을 편안해합니다"
+                ],
+                egenPersonality: [
+                    "공감 능력이 뛰어나고 타인의 감정을 잘 이해합니다",
+                    "협력적이고 조화로운 관계를 추구합니다",
+                    "세심하고 배려심이 깊습니다",
+                    "유연하고 상황에 잘 적응합니다",
+                    "평화를 사랑하고 갈등을 피하려 합니다"
+                ],
+                egenLove: [
+                    "감정적 교류와 깊은 유대감을 중요시합니다",
+                    "파트너의 감정과 필요를 세심하게 배려합니다",
+                    "로맨틱하고 따뜻한 사랑을 추구합니다",
+                    "안정적이고 편안한 관계를 선호합니다",
+                    "소통과 이해를 통한 관계 발전을 추구합니다"
+                ],
+                compatibility: {
+                    tetoMale: [
+                        { title: "테토남 × 에겐녀", score: "최고의 조합", desc: "완벽한 균형을 이루는 이상적 커플입니다." },
+                        { title: "테토남 × 테토녀", score: "역동적 조합", desc: "서로 강한 성향이지만 존중한다면 파워풀한 관계가 가능합니다." }
+                    ],
+                    tetoFemale: [
+                        { title: "테토녀 × 에겐남", score: "흥미로운 조합", desc: "새로운 역학을 만들어내는 특별한 관계입니다." },
+                        { title: "테토녀 × 테토남", score: "파워 커플", desc: "서로 강한 개성을 가진 역동적인 관계입니다." }
+                    ],
+                    egenMale: [
+                        { title: "에겐남 × 테토녀", score: "매력적인 조합", desc: "서로의 다른 매력을 존중하는 특별한 관계입니다." },
+                        { title: "에겐남 × 에겐녀", score: "편안한 조합", desc: "서로를 깊이 이해하고 공감할 수 있는 따뜻한 관계입니다." }
+                    ],
+                    egenFemale: [
+                        { title: "에겐녀 × 테토남", score: "이상적인 조합", desc: "전통적이면서도 완벽한 조합입니다." },
+                        { title: "에겐녀 × 에겐남", score: "공감의 조합", desc: "서로의 감성을 이해하는 따뜻하고 평화로운 관계입니다." }
+                    ]
+                }
+            },
+            en: {
+                title: "Teto-Egen Personality Test",
+                subtitle: "Am I Teto or Egen type?",
+                introText1: "The Teto-Egen personality test analyzes your personality<br>based on testosterone and estrogen characteristics.",
+                introText2: "<strong>Teto Type:</strong> Strong leadership, direct and assertive<br><strong>Egen Type:</strong> Gentle, sensitive with excellent empathy",
+                languageTitle: "Language / 언어",
+                genderTitle: "Please select your gender",
+                male: "Male",
+                female: "Female",
+                startBtn: "Start Test",
+                selectGender: "Please select your gender!",
+                shareTitle: "Share your results!",
+                restartBtn: "Take Test Again",
+                personalityTitle: "🎭 Personality Traits",
+                loveTitle: "💝 Love Style",
+                compatibilityTitle: "💕 Compatibility",
+                kakaoBtn: "💬 KakaoTalk",
+                instagramBtn: "📷 Instagram",
+                twitterBtn: "🐦 Twitter",
+                facebookBtn: "📘 Facebook",
+                copyBtn: "📋 Copy Result",
+                adText1: "Advertisement",
+                adText2: "Advertisement",
+                tetoType: "Teto",
+                egenType: "Egen",
+                tetoDescription: "You are a Teto-{gender} with strong testosterone traits! You have leadership qualities and are direct and assertive.",
+                egenDescription: "You are an Egen-{gender} with strong estrogen traits! You are gentle, sensitive, and have excellent empathy skills.",
+                copySuccess: "Result copied!",
+                tetoPersonality: [
+                    "Goal-oriented and decisive",
+                    "Strong leadership and initiative",
+                    "Competitive and enjoys challenges",
+                    "Prefers direct and honest communication",
+                    "Independent and confident"
+                ],
+                tetoLove: [
+                    "Actively expresses feelings and leads relationships",
+                    "Strong protective instinct towards partner",
+                    "Pursues passionate and intense love",
+                    "Clear communication and direct affection",
+                    "Comfortable taking the lead in relationships"
+                ],
+                egenPersonality: [
+                    "Excellent empathy and understanding of others' emotions",
+                    "Cooperative and seeks harmonious relationships",
+                    "Attentive and deeply considerate",
+                    "Flexible and adaptable to situations",
+                    "Peace-loving and conflict-avoidant"
+                ],
+                egenLove: [
+                    "Values emotional connection and deep bonds",
+                    "Carefully considers partner's feelings and needs",
+                    "Pursues romantic and warm love",
+                    "Prefers stable and comfortable relationships",
+                    "Seeks relationship growth through communication and understanding"
+                ],
+                compatibility: {
+                    tetoMale: [
+                        { title: "Teto-male × Egen-female", score: "Perfect Match", desc: "An ideal couple achieving perfect balance." },
+                        { title: "Teto-male × Teto-female", score: "Dynamic Duo", desc: "Both strong personalities, but powerful when respectful." }
+                    ],
+                    tetoFemale: [
+                        { title: "Teto-female × Egen-male", score: "Interesting Match", desc: "A special relationship creating new dynamics." },
+                        { title: "Teto-female × Teto-male", score: "Power Couple", desc: "A dynamic relationship with strong personalities." }
+                    ],
+                    egenMale: [
+                        { title: "Egen-male × Teto-female", score: "Attractive Match", desc: "A special relationship respecting each other's different charms." },
+                        { title: "Egen-male × Egen-female", score: "Comfortable Match", desc: "A warm relationship with deep understanding and empathy." }
+                    ],
+                    egenFemale: [
+                        { title: "Egen-female × Teto-male", score: "Ideal Match", desc: "A traditional yet perfect combination." },
+                        { title: "Egen-female × Egen-male", score: "Empathetic Match", desc: "A warm and peaceful relationship understanding each other's emotions." }
+                    ]
+                }
+            },
+            ja: {
+                title: "テト-エゲン性格タイプテスト",
+                subtitle: "私はテト型？それともエゲン型？",
+                introText1: "テト-エゲン性格タイプテストは、テストステロンとエストロゲンの特性を基に<br>あなたの性格と行動パターンを分析します。",
+                introText2: "<strong>テト型：</strong>リーダーシップが強く、率直で主導的な傾向<br><strong>エゲン型：</strong>優しく繊細で、共感力に優れた傾向",
+                languageTitle: "Language / 言語",
+                genderTitle: "性別を選択してください",
+                male: "男性",
+                female: "女性",
+                startBtn: "テストを開始",
+                selectGender: "性別を選択してください！",
+                shareTitle: "結果を友達とシェアしよう！",
+                restartBtn: "もう一度テストする",
+                personalityTitle: "🎭 性格特徴",
+                loveTitle: "💝 恋愛スタイル",
+                compatibilityTitle: "💕 恋愛相性",
+                kakaoBtn: "💬 カカオトーク",
+                instagramBtn: "📷 インスタグラム",
+                twitterBtn: "🐦 ツイッター",
+                facebookBtn: "📘 フェイスブック",
+                copyBtn: "📋 結果をコピー",
+                adText1: "広告スペース",
+                adText2: "広告スペース",
+                tetoType: "テト",
+                egenType: "エゲン",
+                tetoDescription: "あなたはテストステロン的特性が強いテト{gender}です！リーダーシップがあり、率直で主導的な傾向があります。",
+                egenDescription: "あなたはエストロゲン的特性が強いエゲン{gender}です！優しく繊細で、共感力に優れた傾向があります。",
+                copySuccess: "結果がコピーされました！",
+                tetoPersonality: [
+                    "目標志向的で決断力がある",
+                    "強いリーダーシップと主導性を持つ",
+                    "競争心が強く、挑戦を楽しむ",
+                    "率直で正直なコミュニケーションを好む",
+                    "独立的で自信に満ちている"
+                ],
+                tetoLove: [
+                    "積極的に気持ちを表現し、関係をリードする",
+                    "パートナーを守る保護本能が強い",
+                    "情熱的で激しい愛を追求する",
+                    "明確な意思表示と直接的な愛情表現を好む",
+                    "関係においても主導権を持つことに心地よさを感じる"
+                ],
+                egenPersonality: [
+                    "優れた共感力で他人の感情をよく理解する",
+                    "協調的で調和のとれた関係を求める",
+                    "細やかで思いやりが深い",
+                    "柔軟で状況に適応しやすい",
+                    "平和を愛し、対立を避けようとする"
+                ],
+                egenLove: [
+                    "感情的な交流と深い絆を大切にする",
+                    "パートナーの感情とニーズを細やかに配慮する",
+                    "ロマンチックで温かい愛を追求する",
+                    "安定的で心地よい関係を好む",
+                    "コミュニケーションと理解を通じた関係の発展を求める"
+                ],
+                compatibility: {
+                    tetoMale: [
+                        { title: "テト男性 × エゲン女性", score: "最高の組み合わせ", desc: "完璧なバランスを成す理想的なカップルです。" },
+                        { title: "テト男性 × テト女性", score: "ダイナミックな組み合わせ", desc: "互いに強い個性を持つが、尊重し合えばパワフルな関係が可能です。" }
+                    ],
+                    tetoFemale: [
+                        { title: "テト女性 × エゲン男性", score: "興味深い組み合わせ", desc: "新しいダイナミクスを生み出す特別な関係です。" },
+                        { title: "テト女性 × テト男性", score: "パワーカップル", desc: "互いに強い個性を持つダイナミックな関係です。" }
+                    ],
+                    egenMale: [
+                        { title: "エゲン男性 × テト女性", score: "魅力的な組み合わせ", desc: "互いの異なる魅力を尊重する特別な関係です。" },
+                        { title: "エゲン男性 × エゲン女性", score: "心地よい組み合わせ", desc: "深く理解し共感できる温かい関係です。" }
+                    ],
+                    egenFemale: [
+                        { title: "エゲン女性 × テト男性", score: "理想的な組み合わせ", desc: "伝統的でありながら完璧な組み合わせです。" },
+                        { title: "エゲン女性 × エゲン男性", score: "共感の組み合わせ", desc: "互いの感性を理解する温かく平和な関係です。" }
+                    ]
+                }
+            },
+            zh: {
+                title: "Teto-Egen性格类型测试",
+                subtitle: "我是Teto型还是Egen型？",
+                introText1: "Teto-Egen性格类型测试基于睾酮和雌激素的特性<br>分析您的性格和行为模式。",
+                introText2: "<strong>Teto型：</strong>领导力强、直率且主动<br><strong>Egen型：</strong>温柔细腻、共情能力出众",
+                languageTitle: "Language / 语言",
+                genderTitle: "请选择您的性别",
+                male: "男性",
+                female: "女性",
+                startBtn: "开始测试",
+                selectGender: "请选择性别！",
+                shareTitle: "与朋友分享结果！",
+                restartBtn: "重新测试",
+                personalityTitle: "🎭 性格特征",
+                loveTitle: "💝 恋爱风格",
+                compatibilityTitle: "💕 恋爱相配度",
+                kakaoBtn: "💬 KakaoTalk",
+                instagramBtn: "📷 Instagram",
+                twitterBtn: "🐦 Twitter",
+                facebookBtn: "📘 Facebook",
+                copyBtn: "📋 复制结果",
+                adText1: "广告区域",
+                adText2: "广告区域",
+                tetoType: "Teto",
+                egenType: "Egen",
+                tetoDescription: "您是睾酮特质强的Teto{gender}！具有领导力、直率且主动的倾向。",
+                egenDescription: "您是雌激素特质强的Egen{gender}！温柔细腻，共情能力出众。",
+                copySuccess: "结果已复制！",
+                tetoPersonality: [
+                    "目标导向且决断力强",
+                    "具有强大的领导力和主动性",
+                    "竞争心强，享受挑战",
+                    "偏好直接坦诚的沟通方式",
+                    "独立自信"
+                ],
+                tetoLove: [
+                    "积极表达情感并主导关系",
+                    "对伴侣有强烈的保护欲",
+                    "追求热情激烈的爱情",
+                    "清晰表达意愿，偏好直接的情感表达",
+                    "在关系中也乐于掌握主导权"
+                ],
+                egenPersonality: [
+                    "共情能力出众，善于理解他人情感",
+                    "合作性强，寻求和谐的关系",
+                    "细心体贴，考虑周到",
+                    "灵活适应各种情况",
+                    "热爱和平，倾向避免冲突"
+                ],
+                egenLove: [
+                    "重视情感交流和深厚的联系",
+                    "细心关注伴侣的感受和需求",
+                    "追求浪漫温暖的爱情",
+                    "偏好稳定舒适的关系",
+                    "通过沟通和理解寻求关系发展"
+                ],
+                compatibility: {
+                    tetoMale: [
+                        { title: "Teto男性 × Egen女性", score: "最佳组合", desc: "达到完美平衡的理想伴侣。" },
+                        { title: "Teto男性 × Teto女性", score: "动感组合", desc: "双方个性都很强，但相互尊重就能形成强大的关系。" }
+                    ],
+                    tetoFemale: [
+                        { title: "Teto女性 × Egen男性", score: "有趣组合", desc: "创造新动态的特殊关系。" },
+                        { title: "Teto女性 × Teto男性", score: "力量伴侣", desc: "双方都有强烈个性的动感关系。" }
+                    ],
+                    egenMale: [
+                        { title: "Egen男性 × Teto女性", score: "魅力组合", desc: "相互尊重彼此不同魅力的特殊关系。" },
+                        { title: "Egen男性 × Egen女性", score: "舒适组合", desc: "能够深入理解和共情的温暖关系。" }
+                    ],
+                    egenFemale: [
+                        { title: "Egen女性 × Teto男性", score: "理想组合", desc: "传统而完美的组合。" },
+                        { title: "Egen女性 × Egen男性", score: "共情组合", desc: "相互理解彼此情感的温暖和谐关系。" }
+                    ]
+                }
+            },
+            es: {
+                title: "Test de Personalidad Teto-Egen",
+                subtitle: "¿Soy tipo Teto o Egen?",
+                introText1: "El test de personalidad Teto-Egen analiza tu personalidad<br>basándose en las características de testosterona y estrógeno.",
+                introText2: "<strong>Tipo Teto:</strong> Fuerte liderazgo, directo y asertivo<br><strong>Tipo Egen:</strong> Gentil, sensible con excelente empatía",
+                languageTitle: "Language / Idioma",
+                genderTitle: "Por favor selecciona tu género",
+                male: "Hombre",
+                female: "Mujer",
+                startBtn: "Comenzar Test",
+                selectGender: "¡Por favor selecciona tu género!",
+                shareTitle: "¡Comparte tus resultados!",
+                restartBtn: "Hacer Test Otra Vez",
+                personalityTitle: "🎭 Rasgos de Personalidad",
+                loveTitle: "💝 Estilo de Amor",
+                compatibilityTitle: "💕 Compatibilidad",
+                kakaoBtn: "💬 KakaoTalk",
+                instagramBtn: "📷 Instagram",
+                twitterBtn: "🐦 Twitter",
+                facebookBtn: "📘 Facebook",
+                copyBtn: "📋 Copiar Resultado",
+                adText1: "Espacio publicitario",
+                adText2: "Espacio publicitario",
+                tetoType: "Teto",
+                egenType: "Egen",
+                tetoDescription: "¡Eres un/a Teto-{gender} con fuertes rasgos de testosterona! Tienes cualidades de liderazgo y eres directo/a y asertivo/a.",
+                egenDescription: "¡Eres un/a Egen-{gender} con fuertes rasgos de estrógeno! Eres gentil, sensible y tienes excelentes habilidades de empatía.",
+                copySuccess: "¡Resultado copiado!",
+                tetoPersonality: [
+                    "Orientado/a a objetivos y decisivo/a",
+                    "Fuerte liderazgo e iniciativa",
+                    "Competitivo/a y disfruta los desafíos",
+                    "Prefiere comunicación directa y honesta",
+                    "Independiente y seguro/a de sí mismo/a"
+                ],
+                tetoLove: [
+                    "Expresa activamente sentimientos y lidera relaciones",
+                    "Fuerte instinto protector hacia la pareja",
+                    "Busca amor apasionado e intenso",
+                    "Comunicación clara y afecto directo",
+                    "Cómodo/a tomando la iniciativa en las relaciones"
+                ],
+                egenPersonality: [
+                    "Excelente empatía y comprensión de las emociones ajenas",
+                    "Cooperativo/a y busca relaciones armoniosas",
+                    "Atento/a y profundamente considerado/a",
+                    "Flexible y adaptable a las situaciones",
+                    "Amante de la paz y evita conflictos"
+                ],
+                egenLove: [
+                    "Valora la conexión emocional y los vínculos profundos",
+                    "Considera cuidadosamente los sentimientos y necesidades de la pareja",
+                    "Busca amor romántico y cálido",
+                    "Prefiere relaciones estables y cómodas",
+                    "Busca el crecimiento de la relación a través de la comunicación y comprensión"
+                ],
+                compatibility: {
+                    tetoMale: [
+                        { title: "Teto-hombre × Egen-mujer", score: "Pareja Perfecta", desc: "Una pareja ideal que logra el equilibrio perfecto." },
+                        { title: "Teto-hombre × Teto-mujer", score: "Dúo Dinámico", desc: "Ambas personalidades fuertes, pero poderosas cuando se respetan." }
+                    ],
+                    tetoFemale: [
+                        { title: "Teto-mujer × Egen-hombre", score: "Pareja Interesante", desc: "Una relación especial que crea nuevas dinámicas." },
+                        { title: "Teto-mujer × Teto-hombre", score: "Pareja Poderosa", desc: "Una relación dinámica con personalidades fuertes." }
+                    ],
+                    egenMale: [
+                        { title: "Egen-hombre × Teto-mujer", score: "Pareja Atractiva", desc: "Una relación especial que respeta los diferentes encantos de cada uno." },
+                        { title: "Egen-hombre × Egen-mujer", score: "Pareja Cómoda", desc: "Una relación cálida con comprensión profunda y empatía." }
+                    ],
+                    egenFemale: [
+                        { title: "Egen-mujer × Teto-hombre", score: "Pareja Ideal", desc: "Una combinación tradicional pero perfecta." },
+                        { title: "Egen-mujer × Egen-hombre", score: "Pareja Empática", desc: "Una relación cálida y pacífica que comprende las emociones mutuas." }
+                    ]
+                }
+            }
+        };
+        
+        // 질문 데이터
+        const questions = {
+            ko: [
+                {
+                    question: "친구들과 함께 있을 때 나는?",
+                    answers: [
+                        { text: "대화를 주도하고 분위기를 이끌어나간다", type: "teto", score: 2 },
+                        { text: "적극적으로 참여하지만 다른 사람 의견도 잘 들어준다", type: "teto", score: 1 },
+                        { text: "대화를 잘 듣고 적절한 때에 공감해준다", type: "egen", score: 1 },
+                        { text: "조용히 있으면서 분위기를 관찰한다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "예쁜 카페를 발견했을 때 나는?",
+                    answers: [
+                        { text: "바로 들어가서 메뉴를 확인하고 주문한다", type: "teto", score: 2 },
+                        { text: "친구들에게 알려주고 같이 가자고 제안한다", type: "teto", score: 1 },
+                        { text: "사진을 찍어두고 언제 갈지 천천히 계획한다", type: "egen", score: 1 },
+                        { text: "외관만 구경하고 다음에 기회가 되면 가겠다고 생각한다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "갈등 상황이 발생했을 때 나는?",
+                    answers: [
+                        { text: "직접적으로 문제를 제기하고 해결책을 제시한다", type: "teto", score: 2 },
+                        { text: "상황을 파악한 후 논리적으로 접근한다", type: "teto", score: 1 },
+                        { text: "상대방의 기분을 먼저 살피고 조심스럽게 대화한다", type: "egen", score: 1 },
+                        { text: "갈등을 피하려고 하거나 중재자 역할을 한다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "새로운 환경에서 나는?",
+                    answers: [
+                        { text: "먼저 다가가서 자기소개를 하고 관계를 만든다", type: "teto", score: 2 },
+                        { text: "상황을 보면서 적절한 때에 적극적으로 나선다", type: "teto", score: 1 },
+                        { text: "다른 사람이 먼저 다가와주길 기다린다", type: "egen", score: 1 },
+                        { text: "조용히 관찰하면서 천천히 적응해나간다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "감정 표현에 있어서 나는?",
+                    answers: [
+                        { text: "감정을 직접적이고 솔직하게 표현한다", type: "teto", score: 2 },
+                        { text: "상황에 따라 적절히 감정을 조절해서 표현한다", type: "teto", score: 1 },
+                        { text: "상대방의 기분을 고려해서 조심스럽게 표현한다", type: "egen", score: 1 },
+                        { text: "감정을 내면에 간직하고 잘 드러내지 않는다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "업무나 과제를 진행할 때 나는?",
+                    answers: [
+                        { text: "목표를 설정하고 빠르게 실행에 옮긴다", type: "teto", score: 2 },
+                        { text: "계획을 세우고 체계적으로 진행한다", type: "teto", score: 1 },
+                        { text: "다른 사람들과 협력하여 함께 해결한다", type: "egen", score: 1 },
+                        { text: "완벽하게 준비가 될 때까지 신중하게 접근한다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "쇼핑을 할 때 나는?",
+                    answers: [
+                        { text: "필요한 것을 빠르게 결정하고 구매한다", type: "teto", score: 2 },
+                        { text: "가성비를 따져보고 합리적으로 선택한다", type: "teto", score: 1 },
+                        { text: "여러 상품을 비교하며 천천히 고민한다", type: "egen", score: 1 },
+                        { text: "분위기나 감정에 따라 구매를 결정한다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "스포츠나 게임을 할 때 나는?",
+                    answers: [
+                        { text: "이기는 것에 집중하고 경쟁을 즐긴다", type: "teto", score: 2 },
+                        { text: "전략을 세우고 실력 향상에 노력한다", type: "teto", score: 1 },
+                        { text: "함께 즐기는 과정을 더 중요하게 생각한다", type: "egen", score: 1 },
+                        { text: "승부보다는 참여 자체에 의미를 둔다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "여행을 계획할 때 나는?",
+                    answers: [
+                        { text: "목적지를 정하고 바로 예약한다", type: "teto", score: 2 },
+                        { text: "일정과 예산을 체계적으로 계획한다", type: "teto", score: 1 },
+                        { text: "함께 갈 사람들의 의견을 충분히 듣는다", type: "egen", score: 1 },
+                        { text: "여유롭게 계획하며 즉흥적인 요소도 남겨둔다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "스트레스를 받을 때 나는?",
+                    answers: [
+                        { text: "문제의 원인을 찾아 즉시 해결하려고 한다", type: "teto", score: 2 },
+                        { text: "운동이나 활동적인 것으로 스트레스를 푼다", type: "teto", score: 1 },
+                        { text: "가까운 사람들과 대화하며 위로받는다", type: "egen", score: 1 },
+                        { text: "혼자만의 시간을 가지며 마음을 정리한다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "새로운 도전 앞에서 나는?",
+                    answers: [
+                        { text: "주저하지 않고 바로 도전한다", type: "teto", score: 2 },
+                        { text: "성공 확률을 분석한 후 결정한다", type: "teto", score: 1 },
+                        { text: "주변 사람들의 조언을 구한다", type: "egen", score: 1 },
+                        { text: "충분히 준비가 될 때까지 기다린다", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "파티나 모임에서 나는?",
+                    answers: [
+                        { text: "적극적으로 사람들과 어울리며 분위기를 만든다", type: "teto", score: 2 },
+                        { text: "관심 있는 주제로 깊이 있는 대화를 나눈다", type: "teto", score: 1 },
+                        { text: "다른 사람들이 편안해하도록 배려한다", type: "egen", score: 1 },
+                        { text: "조용한 곳에서 소수와 대화하는 것을 선호한다", type: "egen", score: 2 }
+                    ]
+                }
+            ],
+            en: [
+                {
+                    question: "When I'm with friends, I:",
+                    answers: [
+                        { text: "Lead conversations and guide the atmosphere", type: "teto", score: 2 },
+                        { text: "Participate actively but also listen to others' opinions", type: "teto", score: 1 },
+                        { text: "Listen well and empathize at appropriate times", type: "egen", score: 1 },
+                        { text: "Stay quiet and observe the atmosphere", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When I discover a beautiful cafe, I:",
+                    answers: [
+                        { text: "Go right in, check the menu and order", type: "teto", score: 2 },
+                        { text: "Tell my friends and suggest going together", type: "teto", score: 1 },
+                        { text: "Take a photo and slowly plan when to visit", type: "egen", score: 1 },
+                        { text: "Just look at the exterior and think about visiting next time", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When a conflict situation arises, I:",
+                    answers: [
+                        { text: "Directly address the problem and suggest solutions", type: "teto", score: 2 },
+                        { text: "Understand the situation and approach logically", type: "teto", score: 1 },
+                        { text: "Check others' feelings first and talk carefully", type: "egen", score: 1 },
+                        { text: "Try to avoid conflict or act as a mediator", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "In a new environment, I:",
+                    answers: [
+                        { text: "Approach first, introduce myself and build relationships", type: "teto", score: 2 },
+                        { text: "Watch the situation and actively engage at the right time", type: "teto", score: 1 },
+                        { text: "Wait for others to approach me first", type: "egen", score: 1 },
+                        { text: "Quietly observe and adapt slowly", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When expressing emotions, I:",
+                    answers: [
+                        { text: "Express emotions directly and honestly", type: "teto", score: 2 },
+                        { text: "Express emotions appropriately depending on the situation", type: "teto", score: 1 },
+                        { text: "Express carefully considering others' feelings", type: "egen", score: 1 },
+                        { text: "Keep emotions inside and don't reveal them much", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When working on tasks or projects, I:",
+                    answers: [
+                        { text: "Set goals and quickly move to action", type: "teto", score: 2 },
+                        { text: "Make plans and proceed systematically", type: "teto", score: 1 },
+                        { text: "Collaborate with others to solve together", type: "egen", score: 1 },
+                        { text: "Approach carefully until perfectly prepared", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When shopping, I:",
+                    answers: [
+                        { text: "Quickly decide what I need and purchase", type: "teto", score: 2 },
+                        { text: "Consider value for money and choose rationally", type: "teto", score: 1 },
+                        { text: "Compare various products and think slowly", type: "egen", score: 1 },
+                        { text: "Make purchases based on mood or feelings", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When playing sports or games, I:",
+                    answers: [
+                        { text: "Focus on winning and enjoy competition", type: "teto", score: 2 },
+                        { text: "Strategize and work on improving skills", type: "teto", score: 1 },
+                        { text: "Think the process of enjoying together is more important", type: "egen", score: 1 },
+                        { text: "Value participation itself over winning", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When planning a trip, I:",
+                    answers: [
+                        { text: "Choose a destination and book immediately", type: "teto", score: 2 },
+                        { text: "Plan schedule and budget systematically", type: "teto", score: 1 },
+                        { text: "Listen carefully to opinions of travel companions", type: "egen", score: 1 },
+                        { text: "Plan leisurely and leave room for spontaneity", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When stressed, I:",
+                    answers: [
+                        { text: "Find the cause and try to solve it immediately", type: "teto", score: 2 },
+                        { text: "Relieve stress through exercise or active pursuits", type: "teto", score: 1 },
+                        { text: "Talk with close people and receive comfort", type: "egen", score: 1 },
+                        { text: "Have alone time and organize my thoughts", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "When facing a new challenge, I:",
+                    answers: [
+                        { text: "Challenge it immediately without hesitation", type: "teto", score: 2 },
+                        { text: "Analyze success probability before deciding", type: "teto", score: 1 },
+                        { text: "Seek advice from people around me", type: "egen", score: 1 },
+                        { text: "Wait until I'm sufficiently prepared", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "At parties or gatherings, I:",
+                    answers: [
+                        { text: "Actively mingle and create atmosphere", type: "teto", score: 2 },
+                        { text: "Have deep conversations on topics of interest", type: "teto", score: 1 },
+                        { text: "Care for others to make them comfortable", type: "egen", score: 1 },
+                        { text: "Prefer conversations with few people in quiet places", type: "egen", score: 2 }
+                    ]
+                }
+            ],
+            ja: [
+                {
+                    question: "友達と一緒にいる時、私は？",
+                    answers: [
+                        { text: "会話をリードして雰囲気を作る", type: "teto", score: 2 },
+                        { text: "積極的に参加するが、他の人の意見もよく聞く", type: "teto", score: 1 },
+                        { text: "会話をよく聞いて適切な時に共感する", type: "egen", score: 1 },
+                        { text: "静かにして雰囲気を観察する", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "素敵なカフェを見つけた時、私は？",
+                    answers: [
+                        { text: "すぐに入ってメニューを確認して注文する", type: "teto", score: 2 },
+                        { text: "友達に教えて一緒に行こうと提案する", type: "teto", score: 1 },
+                        { text: "写真を撮っていつ行くかゆっくり計画する", type: "egen", score: 1 },
+                        { text: "外観だけ見て次回機会があれば行こうと思う", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "対立状況が発生した時、私は？",
+                    answers: [
+                        { text: "直接的に問題を提起して解決策を提示する", type: "teto", score: 2 },
+                        { text: "状況を把握してから論理的にアプローチする", type: "teto", score: 1 },
+                        { text: "相手の気持ちを先に察して慎重に対話する", type: "egen", score: 1 },
+                        { text: "対立を避けようとするか仲裁者の役割をする", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "新しい環境で私は？",
+                    answers: [
+                        { text: "先に近づいて自己紹介をして関係を作る", type: "teto", score: 2 },
+                        { text: "状況を見て適切な時に積極的に出る", type: "teto", score: 1 },
+                        { text: "他の人が先に近づいてくれるのを待つ", type: "egen", score: 1 },
+                        { text: "静かに観察しながらゆっくり適応していく", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "感情表現において私は？",
+                    answers: [
+                        { text: "感情を直接的で率直に表現する", type: "teto", score: 2 },
+                        { text: "状況に応じて適切に感情を調節して表現する", type: "teto", score: 1 },
+                        { text: "相手の気持ちを考えて慎重に表現する", type: "egen", score: 1 },
+                        { text: "感情を内面に大切にしまってあまり表に出さない", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "仕事や課題を進める時、私は？",
+                    answers: [
+                        { text: "目標を設定してすぐに実行に移す", type: "teto", score: 2 },
+                        { text: "計画を立てて体系的に進める", type: "teto", score: 1 },
+                        { text: "他の人と協力して一緒に解決する", type: "egen", score: 1 },
+                        { text: "完璧に準備ができるまで慎重にアプローチする", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "買い物をする時、私は？",
+                    answers: [
+                        { text: "必要なものを素早く決めて購入する", type: "teto", score: 2 },
+                        { text: "コストパフォーマンスを考えて合理的に選ぶ", type: "teto", score: 1 },
+                        { text: "様々な商品を比較しながらゆっくり考える", type: "egen", score: 1 },
+                        { text: "雰囲気や感情に応じて購入を決める", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "スポーツやゲームをする時、私は？",
+                    answers: [
+                        { text: "勝つことに集中して競争を楽しむ", type: "teto", score: 2 },
+                        { text: "戦略を立てて実力向上に努力する", type: "teto", score: 1 },
+                        { text: "一緒に楽しむ過程をより重要に考える", type: "egen", score: 1 },
+                        { text: "勝負より参加自体に意味を置く", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "旅行を計画する時、私は？",
+                    answers: [
+                        { text: "目的地を決めてすぐに予約する", type: "teto", score: 2 },
+                        { text: "日程と予算を体系的に計画する", type: "teto", score: 1 },
+                        { text: "一緒に行く人たちの意見を十分に聞く", type: "egen", score: 1 },
+                        { text: "ゆったりと計画して即興的な要素も残しておく", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "ストレスを受ける時、私は？",
+                    answers: [
+                        { text: "問題の原因を見つけてすぐに解決しようとする", type: "teto", score: 2 },
+                        { text: "運動や活動的なことでストレスを解消する", type: "teto", score: 1 },
+                        { text: "親しい人たちと対話して慰めを受ける", type: "egen", score: 1 },
+                        { text: "一人の時間を持って心を整理する", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "新しい挑戦の前で私は？",
+                    answers: [
+                        { text: "躊躇せずにすぐに挑戦する", type: "teto", score: 2 },
+                        { text: "成功確率を分析してから決定する", type: "teto", score: 1 },
+                        { text: "周りの人たちのアドバイスを求める", type: "egen", score: 1 },
+                        { text: "十分に準備ができるまで待つ", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "パーティーや集まりで私は？",
+                    answers: [
+                        { text: "積極的に人と交流して雰囲気を作る", type: "teto", score: 2 },
+                        { text: "興味のある話題で深い会話を交わす", type: "teto", score: 1 },
+                        { text: "他の人が快適になるよう配慮する", type: "egen", score: 1 },
+                        { text: "静かな場所で少数と会話することを好む", type: "egen", score: 2 }
+                    ]
+                }
+            ],
+            zh: [
+                {
+                    question: "和朋友在一起时，我：",
+                    answers: [
+                        { text: "主导对话并引导氛围", type: "teto", score: 2 },
+                        { text: "积极参与但也会认真听取他人意见", type: "teto", score: 1 },
+                        { text: "认真倾听并在适当时候表示共鸣", type: "egen", score: 1 },
+                        { text: "安静地观察氛围", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "发现漂亮咖啡厅时，我：",
+                    answers: [
+                        { text: "立即进去查看菜单并点餐", type: "teto", score: 2 },
+                        { text: "告诉朋友并建议一起去", type: "teto", score: 1 },
+                        { text: "拍照留念，慢慢计划何时去", type: "egen", score: 1 },
+                        { text: "只看看外观，想着下次有机会再去", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "发生冲突时，我：",
+                    answers: [
+                        { text: "直接提出问题并提供解决方案", type: "teto", score: 2 },
+                        { text: "了解情况后逻辑性地处理", type: "teto", score: 1 },
+                        { text: "先了解对方感受，谨慎地对话", type: "egen", score: 1 },
+                        { text: "试图避免冲突或充当调解者", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "在新环境中，我：",
+                    answers: [
+                        { text: "主动接近，自我介绍并建立关系", type: "teto", score: 2 },
+                        { text: "观察情况，在适当时机积极参与", type: "teto", score: 1 },
+                        { text: "等待他人先来接近我", type: "egen", score: 1 },
+                        { text: "安静观察，慢慢适应", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "在情感表达方面，我：",
+                    answers: [
+                        { text: "直接诚实地表达情感", type: "teto", score: 2 },
+                        { text: "根据情况适当调节情感表达", type: "teto", score: 1 },
+                        { text: "考虑对方感受，谨慎表达", type: "egen", score: 1 },
+                        { text: "将情感藏在内心，不太显露", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "处理工作或任务时，我：",
+                    answers: [
+                        { text: "设定目标并快速付诸行动", type: "teto", score: 2 },
+                        { text: "制定计划并系统性地推进", type: "teto", score: 1 },
+                        { text: "与他人合作共同解决", type: "egen", score: 1 },
+                        { text: "谨慎处理直到完美准备", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "购物时，我：",
+                    answers: [
+                        { text: "快速决定需要的东西并购买", type: "teto", score: 2 },
+                        { text: "考虑性价比，理性选择", type: "teto", score: 1 },
+                        { text: "比较各种商品，慢慢思考", type: "egen", score: 1 },
+                        { text: "根据心情或感觉决定购买", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "进行体育运动或游戏时，我：",
+                    answers: [
+                        { text: "专注于获胜并享受竞争", type: "teto", score: 2 },
+                        { text: "制定策略并努力提高技能", type: "teto", score: 1 },
+                        { text: "认为一起享受过程更重要", type: "egen", score: 1 },
+                        { text: "重视参与本身胜过获胜", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "计划旅行时，我：",
+                    answers: [
+                        { text: "确定目的地并立即预订", type: "teto", score: 2 },
+                        { text: "系统性地规划行程和预算", type: "teto", score: 1 },
+                        { text: "充分听取同行伙伴的意见", type: "egen", score: 1 },
+                        { text: "轻松规划并留出即兴的空间", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "感到压力时，我：",
+                    answers: [
+                        { text: "找出问题原因并立即解决", type: "teto", score: 2 },
+                        { text: "通过运动或活动来缓解压力", type: "teto", score: 1 },
+                        { text: "与亲近的人交谈获得安慰", type: "egen", score: 1 },
+                        { text: "独处时间整理思绪", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "面对新挑战时，我：",
+                    answers: [
+                        { text: "毫不犹豫立即挑战", type: "teto", score: 2 },
+                        { text: "分析成功概率后决定", type: "teto", score: 1 },
+                        { text: "寻求周围人的建议", type: "egen", score: 1 },
+                        { text: "等到充分准备后再行动", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "在聚会或集会上，我：",
+                    answers: [
+                        { text: "积极与人交往并营造氛围", type: "teto", score: 2 },
+                        { text: "就感兴趣的话题进行深入对话", type: "teto", score: 1 },
+                        { text: "关照他人让大家感到舒适", type: "egen", score: 1 },
+                        { text: "喜欢在安静地方与少数人对话", type: "egen", score: 2 }
+                    ]
+                }
+            ],
+            es: [
+                {
+                    question: "Cuando estoy con amigos, yo:",
+                    answers: [
+                        { text: "Lidero las conversaciones y guío el ambiente", type: "teto", score: 2 },
+                        { text: "Participo activamente pero también escucho las opiniones de otros", type: "teto", score: 1 },
+                        { text: "Escucho bien y empatizo en momentos apropiados", type: "egen", score: 1 },
+                        { text: "Me quedo callado/a y observo el ambiente", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Cuando descubro un café bonito, yo:",
+                    answers: [
+                        { text: "Entro inmediatamente, reviso el menú y ordeno", type: "teto", score: 2 },
+                        { text: "Le cuento a mis amigos y sugiero ir juntos", type: "teto", score: 1 },
+                        { text: "Tomo una foto y planeo lentamente cuándo visitar", type: "egen", score: 1 },
+                        { text: "Solo miro el exterior y pienso en visitar la próxima vez", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Cuando surge una situación de conflicto, yo:",
+                    answers: [
+                        { text: "Abordo directamente el problema y sugiero soluciones", type: "teto", score: 2 },
+                        { text: "Entiendo la situación y me acerco lógicamente", type: "teto", score: 1 },
+                        { text: "Verifico primero los sentimientos de otros y hablo con cuidado", type: "egen", score: 1 },
+                        { text: "Trato de evitar el conflicto o actúo como mediador", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "En un ambiente nuevo, yo:",
+                    answers: [
+                        { text: "Me acerco primero, me presento y construyo relaciones", type: "teto", score: 2 },
+                        { text: "Observo la situación y participo activamente en el momento adecuado", type: "teto", score: 1 },
+                        { text: "Espero a que otros se acerquen a mí primero", type: "egen", score: 1 },
+                        { text: "Observo tranquilamente y me adapto lentamente", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Al expresar emociones, yo:",
+                    answers: [
+                        { text: "Expreso emociones directa y honestamente", type: "teto", score: 2 },
+                        { text: "Expreso emociones apropiadamente según la situación", type: "teto", score: 1 },
+                        { text: "Expreso cuidadosamente considerando los sentimientos de otros", type: "egen", score: 1 },
+                        { text: "Guardo las emociones dentro y no las revelo mucho", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Al trabajar en tareas o proyectos, yo:",
+                    answers: [
+                        { text: "Establezco metas y rápidamente paso a la acción", type: "teto", score: 2 },
+                        { text: "Hago planes y procedo sistemáticamente", type: "teto", score: 1 },
+                        { text: "Colaboro con otros para resolver juntos", type: "egen", score: 1 },
+                        { text: "Me acerco cuidadosamente hasta estar perfectamente preparado/a", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Al comprar, yo:",
+                    answers: [
+                        { text: "Decido rápidamente lo que necesito y compro", type: "teto", score: 2 },
+                        { text: "Considero la relación calidad-precio y elijo racionalmente", type: "teto", score: 1 },
+                        { text: "Comparo varios productos y pienso lentamente", type: "egen", score: 1 },
+                        { text: "Hago compras basadas en el estado de ánimo o sentimientos", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Al practicar deportes o juegos, yo:",
+                    answers: [
+                        { text: "Me enfoco en ganar y disfruto la competencia", type: "teto", score: 2 },
+                        { text: "Desarrollo estrategias y trabajo en mejorar habilidades", type: "teto", score: 1 },
+                        { text: "Pienso que el proceso de disfrutar juntos es más importante", type: "egen", score: 1 },
+                        { text: "Valoro la participación en sí misma sobre ganar", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Al planear un viaje, yo:",
+                    answers: [
+                        { text: "Elijo un destino y reservo inmediatamente", type: "teto", score: 2 },
+                        { text: "Planeo el itinerario y presupuesto sistemáticamente", type: "teto", score: 1 },
+                        { text: "Escucho cuidadosamente las opiniones de los compañeros de viaje", type: "egen", score: 1 },
+                        { text: "Planeo relajadamente y dejo espacio para la espontaneidad", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Cuando estoy estresado/a, yo:",
+                    answers: [
+                        { text: "Encuentro la causa y trato de resolverla inmediatamente", type: "teto", score: 2 },
+                        { text: "Alivio el estrés a través del ejercicio o actividades activas", type: "teto", score: 1 },
+                        { text: "Hablo con personas cercanas y recibo consuelo", type: "egen", score: 1 },
+                        { text: "Tengo tiempo a solas y organizo mis pensamientos", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "Al enfrentar un nuevo desafío, yo:",
+                    answers: [
+                        { text: "Lo desafío inmediatamente sin dudarlo", type: "teto", score: 2 },
+                        { text: "Analizo la probabilidad de éxito antes de decidir", type: "teto", score: 1 },
+                        { text: "Busco consejo de las personas a mi alrededor", type: "egen", score: 1 },
+                        { text: "Espero hasta estar suficientemente preparado/a", type: "egen", score: 2 }
+                    ]
+                },
+                {
+                    question: "En fiestas o reuniones, yo:",
+                    answers: [
+                        { text: "Me mezclo activamente y creo ambiente", type: "teto", score: 2 },
+                        { text: "Tengo conversaciones profundas sobre temas de interés", type: "teto", score: 1 },
+                        { text: "Cuido de otros para que se sientan cómodos", type: "egen", score: 1 },
+                        { text: "Prefiero conversaciones con pocas personas en lugares tranquilos", type: "egen", score: 2 }
+                    ]
+                }
+            ]
+        };
+        
+        // 초기화 함수
+        function init() {
+            // DOM 요소 캐싱
+            elements.startScreen = document.getElementById('startScreen');
+            elements.testScreen = document.getElementById('testScreen');
+            elements.resultScreen = document.getElementById('resultScreen');
+            elements.startBtn = document.getElementById('startBtn');
+            elements.progress = document.getElementById('progress');
+            elements.question = document.getElementById('question');
+            elements.answers = document.getElementById('answers');
+            
+            // 이벤트 리스너 설정
+            setupEventListeners();
+            
+            // 초기 UI 업데이트
+            updateUI();
+        }
+        
+        // 이벤트 리스너 설정
+        function setupEventListeners() {
+            // 언어 선택
+            document.querySelectorAll('[data-lang]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    changeLanguage(this.getAttribute('data-lang'));
+                });
+            });
+            
+            // 성별 선택
+            document.querySelectorAll('[data-gender]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectGender(this.getAttribute('data-gender'));
+                });
+            });
+            
+            // 시작 버튼
+            elements.startBtn.addEventListener('click', startTest);
+            
+            // 다시하기 버튼
+            document.getElementById('restartBtn').addEventListener('click', restartTest);
+            
+            // 공유 버튼들
+            document.getElementById('kakaoBtn').addEventListener('click', () => share('kakao'));
+            document.getElementById('instagramBtn').addEventListener('click', () => share('instagram'));
+            document.getElementById('twitterBtn').addEventListener('click', () => share('twitter'));
+            document.getElementById('facebookBtn').addEventListener('click', () => share('facebook'));
+            document.getElementById('copyBtn').addEventListener('click', () => share('copy'));
+        }
+        
+        // 언어 변경
+        function changeLanguage(lang) {
+            state.currentLanguage = lang;
+            
+            // 버튼 상태 업데이트
+            document.querySelectorAll('[data-lang]').forEach(btn => {
+                btn.classList.toggle('selected', btn.getAttribute('data-lang') === lang);
+            });
+            
+            updateUI();
+        }
+        
+        // 성별 선택
+        function selectGender(gender) {
+            state.selectedGender = gender;
+            
+            // 버튼 상태 업데이트
+            document.querySelectorAll('[data-gender]').forEach(btn => {
+                btn.classList.toggle('selected', btn.getAttribute('data-gender') === gender);
+            });
+            
+            // 시작 버튼 활성화
+            elements.startBtn.disabled = false;
+            elements.startBtn.classList.add('primary');
+        }
+        
+        // UI 업데이트
+        function updateUI() {
+            const trans = translations[state.currentLanguage] || translations.ko;
+            
+            // 안전하게 텍스트 업데이트
+            const updateText = (id, text) => {
+                const element = document.getElementById(id);
+                if (element && text) {
+                    element.innerHTML = text;
+                }
+            };
+            
+            updateText('mainTitle', trans.title);
+            updateText('mainSubtitle', trans.subtitle);
+            updateText('introText1', trans.introText1);
+            updateText('introText2', trans.introText2);
+            updateText('languageTitle', trans.languageTitle);
+            updateText('genderTitle', trans.genderTitle);
+            updateText('maleBtn', trans.male);
+            updateText('femaleBtn', trans.female);
+            updateText('startBtn', trans.startBtn);
+            updateText('shareTitle', trans.shareTitle);
+            updateText('restartBtn', trans.restartBtn);
+            updateText('personalityTitle', trans.personalityTitle);
+            updateText('loveTitle', trans.loveTitle);
+            updateText('compatibilityTitle', trans.compatibilityTitle);
+            updateText('kakaoBtn', trans.kakaoBtn);
+            updateText('instagramBtn', trans.instagramBtn);
+            updateText('twitterBtn', trans.twitterBtn);
+            updateText('facebookBtn', trans.facebookBtn);
+            updateText('copyBtn', trans.copyBtn);
+            updateText('adText1', trans.adText1);
+            updateText('adText2', trans.adText2);
+        }
+        
+        // 테스트 시작
+        function startTest() {
+            if (!state.selectedGender) {
+                alert(translations[state.currentLanguage].selectGender);
+                return;
+            }
+            
+            // 상태 초기화
+            state.currentQuestion = 0;
+            state.tetoScore = 0;
+            state.egenScore = 0;
+            
+            // 화면 전환
+            elements.startScreen.classList.add('hidden');
+            elements.testScreen.classList.remove('hidden');
+            
+            showQuestion();
+        }
+        
+        // 질문 표시
+        function showQuestion() {
+            // 현재 언어의 질문 배열 가져오기 (없으면 한국어 사용)
+            const questionsArray = questions[state.currentLanguage] && questions[state.currentLanguage].length > 0 
+                ? questions[state.currentLanguage] 
+                : questions.ko;
+            
+            if (state.currentQuestion >= questionsArray.length) {
+                showResult();
+                return;
+            }
+            
+            const q = questionsArray[state.currentQuestion];
+            
+            // 진행률 업데이트
+            const progress = ((state.currentQuestion + 1) / questionsArray.length) * 100;
+            elements.progress.style.width = progress + '%';
+            
+            // 질문 표시
+            elements.question.textContent = q.question;
+            
+            // 답변 표시
+            elements.answers.innerHTML = '';
+            q.answers.forEach((answer, index) => {
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'answer';
+                answerDiv.textContent = answer.text;
+                answerDiv.addEventListener('click', () => selectAnswer(answer, index));
+                elements.answers.appendChild(answerDiv);
+            });
+        }
+        
+        // 답변 선택
+        function selectAnswer(answer, index) {
+            // 점수 추가
+            if (answer.type === 'teto') {
+                state.tetoScore += answer.score;
+            } else {
+                state.egenScore += answer.score;
+            }
+            
+            // 선택 표시
+            const answers = elements.answers.querySelectorAll('.answer');
+            answers[index].classList.add('selected');
+            
+            // 다음 질문
+            setTimeout(() => {
+                state.currentQuestion++;
+                showQuestion();
+            }, 300);
+        }
+        
+        // 결과 표시
+        function showResult() {
+            // 화면 전환
+            elements.testScreen.classList.add('hidden');
+            elements.resultScreen.classList.remove('hidden');
+            
+            const trans = translations[state.currentLanguage] || translations.ko;
+            const resultType = state.tetoScore > state.egenScore ? 'teto' : 'egen';
+            
+            // 언어별 성별 텍스트 설정
+            let genderText = '';
+            switch(state.currentLanguage) {
+                case 'ko':
+                    genderText = state.selectedGender === 'male' ? '남' : '녀';
+                    break;
+                case 'ja':
+                    genderText = state.selectedGender === 'male' ? '男性' : '女性';
+                    break;
+                case 'zh':
+                    genderText = state.selectedGender === 'male' ? '男性' : '女性';
+                    break;
+                case 'es':
+                    genderText = state.selectedGender === 'male' ? 'hombre' : 'mujer';
+                    break;
+                default: // en
+                    genderText = state.selectedGender === 'male' ? 'male' : 'female';
+            }
+            
+            // 결과 제목
+            const resultTitle = document.getElementById('resultTitle');
+            const typeText = trans[resultType + 'Type'];
+            
+            // 언어별 형식 설정
+            let titleFormat = '';
+            switch(state.currentLanguage) {
+                case 'ko':
+                    titleFormat = `당신은 <span class="${resultType}">${typeText}${genderText}</span>입니다!`;
+                    break;
+                case 'ja':
+                    titleFormat = `あなたは<span class="${resultType}">${typeText}${genderText}</span>です！`;
+                    break;
+                case 'zh':
+                    titleFormat = `您是<span class="${resultType}">${typeText}${genderText}</span>！`;
+                    break;
+                case 'es':
+                    titleFormat = `¡Eres un${state.selectedGender === 'female' ? 'a' : ''} <span class="${resultType}">${typeText}-${genderText}</span>!`;
+                    break;
+                default: // en
+                    titleFormat = `You are a <span class="${resultType}">${typeText}-${genderText}</span>!`;
+            }
+            
+            resultTitle.innerHTML = titleFormat;
+            
+            // 결과 설명
+            const resultDescription = document.getElementById('resultDescription');
+            const description = trans[resultType + 'Description'];
+            resultDescription.textContent = description.replace('{gender}', genderText);
+            
+            // 성격 특징
+            const personalityList = document.getElementById('personalityTraits');
+            personalityList.innerHTML = '';
+            const personalityTraits = trans[resultType + 'Personality'];
+            if (personalityTraits) {
+                personalityTraits.forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait;
+                    personalityList.appendChild(li);
+                });
+            }
+            
+            // 연애 스타일
+            const loveList = document.getElementById('loveTraits');
+            loveList.innerHTML = '';
+            const loveTraits = trans[resultType + 'Love'];
+            if (loveTraits) {
+                loveTraits.forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait;
+                    loveList.appendChild(li);
+                });
+            }
+            
+            // 연애 궁합
+            const compatibilityContent = document.getElementById('compatibilityContent');
+            compatibilityContent.innerHTML = '';
+            
+            if (trans.compatibility) {
+                const compatKey = resultType + (state.selectedGender === 'male' ? 'Male' : 'Female');
+                const compatData = trans.compatibility[compatKey];
+                
+                if (compatData) {
+                    compatData.forEach(compat => {
+                        const item = document.createElement('div');
+                        item.className = 'compatibility-item';
+                        item.innerHTML = `
+                            <h4>${compat.title} <span class="compatibility-score">${compat.score}</span></h4>
+                            <p>${compat.desc}</p>
+                        `;
+                        compatibilityContent.appendChild(item);
+                    });
+                }
+            }
+        }
+        
+        // 공유 기능
+        function share(platform) {
+            const trans = translations[state.currentLanguage] || translations.ko;
+            const resultType = state.tetoScore > state.egenScore ? 'teto' : 'egen';
+            
+            // 언어별 성별 텍스트
+            let genderText = '';
+            switch(state.currentLanguage) {
+                case 'ko':
+                    genderText = state.selectedGender === 'male' ? '남' : '녀';
+                    break;
+                case 'ja':
+                    genderText = state.selectedGender === 'male' ? '男性' : '女性';
+                    break;
+                case 'zh':
+                    genderText = state.selectedGender === 'male' ? '男性' : '女性';
+                    break;
+                case 'es':
+                    genderText = state.selectedGender === 'male' ? 'hombre' : 'mujer';
+                    break;
+                default: // en
+                    genderText = state.selectedGender === 'male' ? 'male' : 'female';
+            }
+            
+            const result = `${trans[resultType + 'Type']}${state.currentLanguage === 'en' || state.currentLanguage === 'es' ? '-' : ''}${genderText}`;
+            const url = window.location.href;
+            
+            // 언어별 공유 텍스트
+            let text = '';
+            switch(state.currentLanguage) {
+                case 'ko':
+                    text = `나는 ${result}! 테토-에겐 성격유형 테스트 결과를 확인해보세요!`;
+                    break;
+                case 'ja':
+                    text = `私は${result}！テト-エゲン性格タイプテストの結果をチェック！`;
+                    break;
+                case 'zh':
+                    text = `我是${result}！查看Teto-Egen性格类型测试结果！`;
+                    break;
+                case 'es':
+                    text = `¡Soy ${result}! ¡Mira mis resultados del test Teto-Egen!`;
+                    break;
+                default: // en
+                    text = `I'm ${result}! Check out my Teto-Egen personality test results!`;
+            }
+            
+            switch(platform) {
+                case 'copy':
+                    navigator.clipboard.writeText(`${text}\n${url}`)
+                        .then(() => alert(trans.copySuccess))
+                        .catch(() => alert('Copy failed / 복사 실패'));
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+                    break;
+                case 'facebook':
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+                    break;
+                default:
+                    navigator.clipboard.writeText(`${text}\n${url}`)
+                        .then(() => alert(trans.copySuccess || 'Copied!'));
+            }
+        }
+        
+        // 다시 시작
+        function restartTest() {
+            // 상태 초기화
+            state.currentQuestion = 0;
+            state.tetoScore = 0;
+            state.egenScore = 0;
+            state.selectedGender = null;
+            
+            // UI 초기화
+            document.querySelectorAll('[data-gender]').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            elements.startBtn.disabled = true;
+            elements.startBtn.classList.remove('primary');
+            
+            // 화면 전환
+            elements.resultScreen.classList.add('hidden');
+            elements.startScreen.classList.remove('hidden');
+        }
+        
+        // 모듈 공개 API
+        return {
+            init: init
+        };
+    })();
+    
+    // DOM 로드 완료 시 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+        TetoEgenTest.init();
+    });
+    </script>
+    
+    <!-- 구글 애드센스 자동 광고 스크립트 위치 -->
+    <!-- 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR-PUBLISHER-ID"
+         crossorigin="anonymous"></script>
+    -->
+</body>
+</html> 
