@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="테토형과 에겐형의 특징, 장단점, 연애 스타일, 직업 적성 등을 상세히 알아보는 완벽 가이드">
+    <title>테토-에겐 성격유형 완벽 가이드 | 나의 성격유형 깊이 알기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #555;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .type-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .type-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .type-card.teto {
+            border-color: #e53e3e;
+        }
+        
+        .type-card.egen {
+            border-color: #38a169;
+        }
+        
+        .type-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .type-card.teto h4 {
+            color: #e53e3e;
+        }
+        
+        .type-card.egen h4 {
+            color: #38a169;
+        }
+        
+        .trait-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .trait-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .trait-list li:before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .faq-section {
+            margin-top: 40px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8f9fa;
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .type-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>테토-에겐 성격유형 완벽 가이드</h1>
+        <p style="font-size: 1.2rem; margin-top: 10px;">당신의 성격유형을 깊이 있게 이해하세요</p>
+    </div>
+    
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" style="font-weight: bold; font-size: 1.2rem; color: #667eea; text-decoration: none;">테토-에겐 테스트</a>
+            <ul class="nav-links">
+                <li><a href="/">테스트하기</a></li>
+                <li><a href="/guide">성격유형 가이드</a></li>
+                <li><a href="/faq">자주 묻는 질문</a></li>
+                <li><a href="/contact">문의</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section class="content-section">
+            <h2>테토-에겐 이론이란?</h2>
+            <p>테토-에겐 성격유형 이론은 호르몬이 성격과 행동 패턴에 미치는 영향을 바탕으로 개발된 현대적인 성격 분류 체계입니다. 테스토스테론(Testosterone)과 에스트로겐(Estrogen)의 특성을 기반으로, 사람들의 성격을 크게 두 가지 유형으로 분류합니다.</p>
+            
+            <h3>이론의 배경</h3>
+            <p>현대 심리학과 내분비학의 연구 결과를 바탕으로, 호르몬이 단순히 신체적 특성뿐만 아니라 성격, 사고방식, 행동 패턴에도 영향을 미친다는 것이 밝혀졌습니다. 테토-에겐 이론은 이러한 과학적 발견을 실생활에 적용할 수 있도록 단순화한 모델입니다.</p>
+            
+            <h3>왜 테토-에겐 테스트가 필요한가?</h3>
+            <ul class="trait-list">
+                <li>자신의 성격 특성을 객관적으로 이해할 수 있습니다</li>
+                <li>대인관계에서의 강점과 약점을 파악할 수 있습니다</li>
+                <li>연애와 결혼에서 더 나은 선택을 할 수 있습니다</li>
+                <li>직업 선택과 커리어 개발에 도움이 됩니다</li>
+                <li>팀워크와 리더십 스타일을 개선할 수 있습니다</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>테토형 vs 에겐형 상세 비교</h2>
+            
+            <div class="type-comparison">
+                <div class="type-card teto">
+                    <h4>테토형 (Teto Type)</h4>
+                    <p><strong>핵심 키워드:</strong> 리더십, 도전, 직진</p>
+                    
+                    <h5 style="margin-top: 20px;">성격 특징</h5>
+                    <ul class="trait-list">
+                        <li>목표 지향적이고 성취욕이 강함</li>
+                        <li>경쟁을 즐기고 승부욕이 있음</li>
+                        <li>직설적이고 효율성을 추구함</li>
+                        <li>독립적이고 자기주장이 강함</li>
+                        <li>위험을 감수하고 도전을 즐김</li>
+                    </ul>
+                    
+                    <h5 style="margin-top: 20px;">장점</h5>
+                    <ul class="trait-list">
+                        <li>뛰어난 리더십과 추진력</li>
+                        <li>빠른 의사결정 능력</li>
+                        <li>목표 달성에 대한 강한 의지</li>
+                        <li>위기 상황에서의 대처 능력</li>
+                    </ul>
+                    
+                    <h5 style="margin-top: 20px;">단점</h5>
+                    <ul class="trait-list">
+                        <li>때로는 지나치게 공격적임</li>
+                        <li>타인의 감정을 간과할 수 있음</li>
+                        <li>인내심이 부족할 수 있음</li>
+                        <li>완고하고 융통성이 부족할 수 있음</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card egen">
+                    <h4>에겐형 (Egen Type)</h4>
+                    <p><strong>핵심 키워드:</strong> 공감, 조화, 배려</p>
+                    
+                    <h5 style="margin-top: 20px;">성격 특징</h5>
+                    <ul class="trait-list">
+                        <li>타인의 감정을 잘 이해하고 공감함</li>
+                        <li>협력적이고 팀워크를 중시함</li>
+                        <li>세심하고 디테일에 강함</li>
+                        <li>평화를 추구하고 갈등을 피함</li>
+                        <li>관계 지향적이고 소통을 중시함</li>
+                    </ul>
+                    
+                    <h5 style="margin-top: 20px;">장점</h5>
+                    <ul class="trait-list">
+                        <li>뛰어난 대인관계 능력</li>
+                        <li>팀의 화합을 이끌어내는 능력</li>
+                        <li>섬세한 관찰력과 통찰력</li>
+                        <li>타인을 돕고 지원하는 능력</li>
+                    </ul>
+                    
+                    <h5 style="margin-top: 20px;">단점</h5>
+                    <ul class="trait-list">
+                        <li>결정을 내리는데 시간이 오래 걸림</li>
+                        <li>자기주장이 약할 수 있음</li>
+                        <li>타인의 평가에 민감함</li>
+                        <li>갈등 상황을 회피하려는 경향</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>연애와 결혼에서의 테토-에겐</h2>
+            
+            <h3>테토형의 연애 스타일</h3>
+            <ul class="trait-list">
+                <li><strong>적극적인 어프로치:</strong> 마음에 드는 상대에게 직접적으로 다가갑니다</li>
+                <li><strong>보호 본능:</strong> 연인을 지키고 보호하려는 욕구가 강합니다</li>
+                <li><strong>열정적인 사랑:</strong> 강렬하고 뜨거운 사랑을 추구합니다</li>
+                <li><strong>명확한 의사표현:</strong> 좋아하는 것과 싫어하는 것을 분명히 표현합니다</li>
+                <li><strong>주도적인 데이트:</strong> 데이트 계획을 세우고 리드하는 것을 좋아합니다</li>
+            </ul>
+            
+            <h3>에겐형의 연애 스타일</h3>
+            <ul class="trait-list">
+                <li><strong>감정적 교류:</strong> 깊은 정서적 연결을 중요시합니다</li>
+                <li><strong>세심한 배려:</strong> 상대방의 기분과 필요를 항상 고려합니다</li>
+                <li><strong>로맨틱한 분위기:</strong> 따뜻하고 낭만적인 순간을 만들어갑니다</li>
+                <li><strong>안정적인 관계:</strong> 드라마틱한 것보다 편안한 관계를 선호합니다</li>
+                <li><strong>소통 중시:</strong> 대화와 이해를 통해 관계를 발전시킵니다</li>
+            </ul>
+            
+            <h3>궁합 분석</h3>
+            <p><strong>테토 × 에겐:</strong> 가장 이상적인 조합으로, 서로의 부족한 부분을 완벽하게 보완합니다. 테토의 추진력과 에겐의 세심함이 조화를 이룹니다.</p>
+            <p><strong>테토 × 테토:</strong> 역동적이고 열정적이지만, 주도권 다툼이 있을 수 있습니다. 서로를 인정하고 존중하는 것이 중요합니다.</p>
+            <p><strong>에겐 × 에겐:</strong> 평화롭고 안정적이지만, 때로는 결단력이 부족할 수 있습니다. 함께 성장하려는 노력이 필요합니다.</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>직업과 커리어</h2>
+            
+            <h3>테토형에게 적합한 직업</h3>
+            <ul class="trait-list">
+                <li><strong>경영/관리직:</strong> CEO, 팀장, 프로젝트 매니저</li>
+                <li><strong>영업/마케팅:</strong> 영업 전문가, 마케팅 디렉터</li>
+                <li><strong>창업/사업:</strong> 스타트업 창업자, 자영업자</li>
+                <li><strong>전문직:</strong> 변호사, 외과의사, 투자 전문가</li>
+                <li><strong>스포츠/경쟁 분야:</strong> 운동선수, 코치, 경쟁 게이머</li>
+            </ul>
+            
+            <h3>에겐형에게 적합한 직업</h3>
+            <ul class="trait-list">
+                <li><strong>상담/치료:</strong> 심리상담사, 사회복지사, 치료사</li>
+                <li><strong>교육:</strong> 교사, 교육 컨설턴트, 멘토</li>
+                <li><strong>의료/간호:</strong> 간호사, 소아과 의사, 재활치료사</li>
+                <li><strong>예술/디자인:</strong> 디자이너, 작가, 음악가</li>
+                <li><strong>HR/조직문화:</strong> 인사담당자, 조직문화 전문가</li>
+            </ul>
+        </section>
+        
+        <div class="cta-section">
+            <h2>당신의 성격유형이 궁금하신가요?</h2>
+            <p>지금 바로 테스트를 시작하고 자신의 진짜 모습을 발견하세요!</p>
+            <a href="/" class="cta-button">무료 테스트 시작하기</a>
+        </div>
+        
+        <section class="content-section">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        테토-에겐 테스트는 과학적으로 검증된 것인가요?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        테토-에겐 테스트는 호르몬과 성격의 상관관계에 대한 현대 심리학 연구를 바탕으로 개발되었습니다. 하지만 이는 단순화된 모델이며, 실제 성격은 훨씬 복잡하고 다양한 요인의 영향을 받습니다. 이 테스트는 자기 이해를 돕는 도구로 활용하되, 전문적인 심리 상담을 대체할 수는 없습니다.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        성별과 테토/에겐 유형은 관련이 있나요?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        테토/에겐 유형은 생물학적 성별과 직접적인 관련이 없습니다. 남성 중에도 에겐형이 많고, 여성 중에도 테토형이 많습니다. 이는 개인의 성격 특성을 나타내는 것이지, 성별 고정관념을 강화하려는 것이 아닙니다.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        내 유형을 바꿀 수 있나요?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        성격 유형은 고정된 것이 아니며, 상황과 경험에 따라 변할 수 있습니다. 또한 대부분의 사람들은 두 유형의 특성을 모두 가지고 있으며, 상황에 따라 다른 면을 보입니다. 중요한 것은 자신의 강점을 살리고 약점을 보완하는 것입니다.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        테스트 결과가 정확하지 않은 것 같아요.
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        테스트는 일반적인 경향성을 파악하는 도구입니다. 기분, 상황, 최근 경험 등에 따라 답변이 달라질 수 있으며, 이는 자연스러운 현상입니다. 며칠 후 다시 테스트해보거나, 가까운 사람에게 의견을 물어보는 것도 도움이 됩니다.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer style="background: #333; color: white; padding: 40px 20px; margin-top: 50px;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                <a href="/privacy" style="color: white; text-decoration: none;">개인정보처리방침</a>
+                <a href="/terms" style="color: white; text-decoration: none;">이용약관</a>
+                <a href="/contact" style="color: white; text-decoration: none;">문의하기</a>
+                <a href="/sitemap" style="color: white; text-decoration: none;">사이트맵</a>
+            </div>
+            <p>&copy; 2024 Teto-Egen Test. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ 토글 기능
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                const arrow = question.querySelector('span');
+                arrow.textContent = item.classList.contains('active') ? '▲' : '▼';
+            });
+        });
+    </script>
+</body>
+</html>
